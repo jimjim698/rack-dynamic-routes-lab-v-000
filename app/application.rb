@@ -10,6 +10,7 @@ class Application
     if req.path.match(/items/)
       check_item = req.path.split("/items/").last
       @@items.detect do |item|
+        binding.pry
         if item.name == check_item
         resp.write "#{item.price}"
       else
@@ -24,16 +25,5 @@ class Application
     resp.finish
   end
 
-
-def item_price(new_item)
-  @@items.each do |item|
-    if item.name == new_item
-      "#{item.price}"
-    else
-      nil
-
-    end
-  end
-end
 
 end
